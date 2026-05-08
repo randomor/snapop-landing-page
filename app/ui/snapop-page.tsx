@@ -235,6 +235,9 @@ function Hero() {
             mix={css({
               position: 'relative',
               width: 'min(72vw, 330px)',
+              height: 'auto',
+              aspectRatio: '473 / 1024',
+              objectFit: 'contain',
               borderRadius: '18px',
               boxShadow: '0 34px 84px rgba(7, 7, 7, 0.24)',
               transform: 'rotate(2deg)',
@@ -311,22 +314,17 @@ function PreviewGallery() {
         <div
           mix={css({
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             gap: '22px',
             alignItems: 'start',
             '@media (max-width: 980px)': {
               overflowX: 'auto',
-              gridTemplateColumns: 'repeat(4, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(3, minmax(220px, 1fr))',
               paddingBottom: '8px',
               scrollSnapType: 'x mandatory',
             },
           })}
         >
-          <PreviewCard
-            src="/previews/01-stop-sending-boring-snaps.png"
-            alt="Stop sending boring snaps App Store preview"
-            label="One tap from glorious shots"
-          />
           <PreviewCard
             src="/previews/02-frame-crop-aspect-ratio.png"
             alt="Frame, crop, aspect ratio in seconds App Store preview"
@@ -506,6 +504,9 @@ function PreviewCard() {
         loading="lazy"
         mix={css({
           width: '100%',
+          height: 'auto',
+          aspectRatio: '473 / 1024',
+          objectFit: 'contain',
           borderRadius: '18px',
           boxShadow: '0 24px 54px rgba(7, 7, 7, 0.28)',
           background: 'var(--red)',
