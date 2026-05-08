@@ -18,6 +18,7 @@ jobs:
     name: Deploy to Cloudflare Workers
     runs-on: ubuntu-latest
     env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       CLOUDFLARE_ACCOUNT_ID: e1bc19a5ee49234bb2d70dc546272f8e
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
