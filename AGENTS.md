@@ -15,6 +15,14 @@ npm run typecheck
 
 Refer to ./agents/skills/remix/SKILL.md
 
+## Design Sources
+
+- App preview and OG image design live in Figma:
+  https://www.figma.com/design/7jw2ZlAhPoXgdWzai3LWVA/App-Preview-Design?node-id=0-1&p=f&t=lOjSLx2xpauGdufx-0
+- The editable OG source frame is `OG Image - SnaPOP`:
+  https://www.figma.com/design/7jw2ZlAhPoXgdWzai3LWVA/App-Preview-Design?node-id=46-2
+- Export that Figma frame to update `public/og-image.png`; avoid treating the OG image as a one-off generated raster.
+
 ## Layout
 
 - `app/controllers/home.tsx` owns the home page
