@@ -141,12 +141,13 @@ function Hero() {
           <img
             src={ICON_URL}
             alt="SnaPOP app icon"
-            width="132"
-            height="88"
+            width="1024"
+            height="1024"
             mix={css({
-              width: '132px',
-              height: '88px',
-              objectFit: 'cover',
+              width: '112px',
+              height: '112px',
+              objectFit: 'contain',
+              background: 'var(--white)',
               borderRadius: '24px',
               boxShadow: '0 20px 54px rgba(255, 59, 48, 0.24)',
             })}
@@ -443,12 +444,13 @@ function FinalCta() {
         <img
           src={ICON_URL}
           alt=""
-          width="108"
-          height="72"
+          width="1024"
+          height="1024"
           mix={css({
-            width: '108px',
-            height: '72px',
-            objectFit: 'cover',
+            width: '96px',
+            height: '96px',
+            objectFit: 'contain',
+            background: 'var(--white)',
             borderRadius: '20px',
             boxShadow: '0 18px 48px rgba(255, 59, 48, 0.22)',
           })}
