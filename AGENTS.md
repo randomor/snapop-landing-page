@@ -15,6 +15,11 @@ npm run typecheck
 
 Refer to ./agents/skills/remix/SKILL.md
 
+## Deployment
+
+- Cloudflare Workers is configured to watch `origin/main`; commits pushed there automatically trigger a deploy.
+- `wrangler.jsonc` remains the local Cloudflare Workers config, but routine deploys should happen through the push-triggered Cloudflare pipeline.
+
 ## Design Sources
 
 - App preview and OG image design live in Figma:

@@ -188,13 +188,13 @@ function Hero() {
               mix={css({
                 margin: 0,
                 maxWidth: '680px',
-                fontSize: 'clamp(3.35rem, 8.8vw, 7.25rem)',
-                lineHeight: 0.9,
+                fontSize: 'clamp(3rem, 7.2vw, 6.1rem)',
+                lineHeight: 0.94,
                 letterSpacing: 0,
                 fontWeight: 1000,
               })}
             >
-              Stop sending boring snaps
+              One tap to glorious shots
             </h1>
             <p
               mix={css({
