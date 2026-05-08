@@ -23,3 +23,11 @@ npm test
 npm run typecheck
 npm run deploy
 ```
+
+## Deployment
+
+Pushes to `main` run `.github/workflows/deploy-worker.yml`, which installs dependencies,
+runs the checks, and deploys the Worker with Wrangler.
+
+The workflow needs a GitHub Actions repository secret named `CLOUDFLARE_API_TOKEN`.
+Create it from the Cloudflare dashboard with Workers deploy permissions for this account.
