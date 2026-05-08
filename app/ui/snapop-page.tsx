@@ -2,7 +2,10 @@ import { css, type RemixNode } from 'remix/ui'
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/snapop/id6756635978'
 const ICON_URL = '/snapop-icon.png'
-const OG_IMAGE_URL = 'https://snapop.app/previews/01-stop-sending-boring-snaps.png'
+const ICON_WEBP_URL = '/snapop-icon-256.webp'
+const OG_IMAGE_URL = 'https://snapop.app/og-image.png'
+const OG_IMAGE_ALT =
+  'SnaPOP screenshot editor preview with the headline Stop sending boring snaps.'
 
 export function SnapopPage() {
   return () => (
@@ -25,6 +28,11 @@ export function SnapopPage() {
           content="Stop sending boring snaps. Turn screenshots into polished marketing visuals with bold frames, focus effects, blur, and callouts."
         />
         <meta property="og:image" content={OG_IMAGE_URL} />
+        <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SnaPOP - Screenshot Editor for Social" />
         <meta
@@ -32,8 +40,15 @@ export function SnapopPage() {
           content="Frame, crop, focus, blur, and annotate screenshots into poster-style visuals in seconds."
         />
         <meta name="twitter:image" content={OG_IMAGE_URL} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
         <title>SnaPOP - Screenshot Editor for Social</title>
         <link rel="icon" href={ICON_URL} />
+        <link
+          rel="preload"
+          as="image"
+          href="/previews/01-stop-sending-boring-snaps.webp"
+          type="image/webp"
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -73,6 +88,7 @@ export function SnapopPage() {
           WebkitFontSmoothing: 'antialiased',
           MozOsxFontSmoothing: 'grayscale',
           '& *, & *::before, & *::after': { boxSizing: 'border-box' },
+          '& picture': { display: 'block', maxWidth: '100%' },
           '& img': { display: 'block', maxWidth: '100%' },
         })}
       >
@@ -138,20 +154,24 @@ function Hero() {
             },
           })}
         >
-          <img
-            src={ICON_URL}
-            alt="SnaPOP app icon"
-            width="1024"
-            height="1024"
-            mix={css({
-              width: '112px',
-              height: '112px',
-              objectFit: 'contain',
-              background: 'var(--white)',
-              borderRadius: '24px',
-              boxShadow: '0 20px 54px rgba(255, 59, 48, 0.24)',
-            })}
-          />
+          <picture>
+            <source srcSet={ICON_WEBP_URL} type="image/webp" />
+            <img
+              src={ICON_URL}
+              alt="SnaPOP app icon"
+              width="1024"
+              height="1024"
+              decoding="async"
+              mix={css({
+                width: '112px',
+                height: '112px',
+                objectFit: 'contain',
+                background: 'var(--white)',
+                borderRadius: '24px',
+                boxShadow: '0 20px 54px rgba(255, 59, 48, 0.24)',
+              })}
+            />
+          </picture>
           <div mix={css({ display: 'grid', gap: '16px' })}>
             <p
               mix={css({
@@ -228,25 +248,30 @@ function Hero() {
             },
           })}
         >
-          <img
-            src="/previews/01-stop-sending-boring-snaps.png"
-            alt="SnaPOP App Store preview showing a polished social screenshot result"
-            width="473"
-            height="1024"
-            mix={css({
-              position: 'relative',
-              width: 'min(72vw, 330px)',
-              height: 'auto',
-              aspectRatio: '473 / 1024',
-              objectFit: 'contain',
-              borderRadius: '18px',
-              boxShadow: '0 34px 84px rgba(7, 7, 7, 0.24)',
-              transform: 'rotate(2deg)',
-              '@media (max-width: 900px)': {
-                width: 'min(70vw, 292px)',
-              },
-            })}
-          />
+          <picture>
+            <source srcSet="/previews/01-stop-sending-boring-snaps.webp" type="image/webp" />
+            <img
+              src="/previews/01-stop-sending-boring-snaps.png"
+              alt="SnaPOP App Store preview showing a polished social screenshot result"
+              width="473"
+              height="1024"
+              decoding="async"
+              fetchPriority="high"
+              mix={css({
+                position: 'relative',
+                width: 'min(72vw, 330px)',
+                height: 'auto',
+                aspectRatio: '473 / 1024',
+                objectFit: 'contain',
+                borderRadius: '18px',
+                boxShadow: '0 34px 84px rgba(7, 7, 7, 0.24)',
+                transform: 'rotate(2deg)',
+                '@media (max-width: 900px)': {
+                  width: 'min(70vw, 292px)',
+                },
+              })}
+            />
+          </picture>
         </div>
       </div>
     </section>
@@ -328,16 +353,19 @@ function PreviewGallery() {
         >
           <PreviewCard
             src="/previews/02-frame-crop-aspect-ratio.png"
+            webpSrc="/previews/02-frame-crop-aspect-ratio.webp"
             alt="Frame, crop, aspect ratio in seconds App Store preview"
             label="Ultimate control at your fingertip"
           />
           <PreviewCard
             src="/previews/03-center-audience-attention.png"
+            webpSrc="/previews/03-center-audience-attention.webp"
             alt="Center your audience's attention App Store preview"
             label="Callouts, focus, and emphasis"
           />
           <PreviewCard
             src="/previews/04-focus-or-blur.png"
+            webpSrc="/previews/04-focus-or-blur.webp"
             alt="Focus or blur with a switch App Store preview"
             label="Delete the clutter"
           />
@@ -441,20 +469,25 @@ function FinalCta() {
           gap: '24px',
         })}
       >
-        <img
-          src={ICON_URL}
-          alt=""
-          width="1024"
-          height="1024"
-          mix={css({
-            width: '96px',
-            height: '96px',
-            objectFit: 'contain',
-            background: 'var(--white)',
-            borderRadius: '20px',
-            boxShadow: '0 18px 48px rgba(255, 59, 48, 0.22)',
-          })}
-        />
+        <picture>
+          <source srcSet={ICON_WEBP_URL} type="image/webp" />
+          <img
+            src={ICON_URL}
+            alt=""
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            mix={css({
+              width: '96px',
+              height: '96px',
+              objectFit: 'contain',
+              background: 'var(--white)',
+              borderRadius: '20px',
+              boxShadow: '0 18px 48px rgba(255, 59, 48, 0.22)',
+            })}
+          />
+        </picture>
         <div mix={css({ display: 'grid', gap: '14px', justifyItems: 'center' })}>
           <h2
             id="download-title"
@@ -489,7 +522,17 @@ function FinalCta() {
 }
 
 function PreviewCard() {
-  return ({ src, alt, label }: { src: string; alt: string; label: string }) => (
+  return ({
+    src,
+    webpSrc,
+    alt,
+    label,
+  }: {
+    src: string
+    webpSrc: string
+    alt: string
+    label: string
+  }) => (
     <figure
       mix={css({
         margin: 0,
@@ -498,22 +541,26 @@ function PreviewCard() {
         gap: '12px',
       })}
     >
-      <img
-        src={src}
-        alt={alt}
-        width="473"
-        height="1024"
-        loading="lazy"
-        mix={css({
-          width: '100%',
-          height: 'auto',
-          aspectRatio: '473 / 1024',
-          objectFit: 'contain',
-          borderRadius: '18px',
-          boxShadow: '0 24px 54px rgba(7, 7, 7, 0.28)',
-          background: 'var(--red)',
-        })}
-      />
+      <picture>
+        <source srcSet={webpSrc} type="image/webp" />
+        <img
+          src={src}
+          alt={alt}
+          width="473"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          mix={css({
+            width: '100%',
+            height: 'auto',
+            aspectRatio: '473 / 1024',
+            objectFit: 'contain',
+            borderRadius: '18px',
+            boxShadow: '0 24px 54px rgba(7, 7, 7, 0.28)',
+            background: 'var(--red)',
+          })}
+        />
+      </picture>
       <figcaption
         mix={css({
           color: 'rgba(255, 255, 255, 0.88)',
