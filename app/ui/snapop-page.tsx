@@ -75,7 +75,7 @@ export function SnapopPage() {
           '--red-deep': '#ff2b14',
           '--red-hot': '#ff4a18',
           '--ink': '#070707',
-          '--muted': '#4a4a4a',
+          '--muted': '#6a6a6a',
           '--paper': '#fff7f3',
           '--white': '#ffffff',
           margin: 0,
@@ -494,8 +494,8 @@ function FinalCta() {
             mix={css({
               margin: 0,
               maxWidth: '760px',
-              fontSize: 'clamp(2.8rem, 7vw, 6.4rem)',
-              lineHeight: 0.9,
+              fontSize: 'clamp(2.2rem, 5.2vw, 4.5rem)',
+              lineHeight: 0.96,
               letterSpacing: 0,
               fontWeight: 1000,
             })}
