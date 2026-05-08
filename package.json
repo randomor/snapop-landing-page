@@ -1,0 +1,24 @@
+{
+  "name": "snapop-landing-page",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "deploy": "wrangler deploy",
+    "start": "tsx server.ts",
+    "test": "tsx --test",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  },
+  "dependencies": {
+    "remix": "^3.0.0-beta.0",
+    "tsx": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "wrangler": "^4.85.0",
+    "typescript": "latest"
+  }
+}
