@@ -3,6 +3,13 @@
   "name": "snapop-landing-page",
   "main": "./worker.ts",
   "compatibility_date": "2026-05-08",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "snapop.app/*",
+      "zone_name": "snapop.app"
+    }
+  ],
   "assets": {
     "directory": "./public"
   }

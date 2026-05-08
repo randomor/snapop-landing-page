@@ -12,6 +12,7 @@ A minimal Remix 3 beta landing page for SnaPOP.
 - `app/utils/render.tsx` centralizes HTML response rendering.
 - `worker.ts` is the Cloudflare Workers entry point.
 - `wrangler.jsonc` configures the Worker and static assets.
+- `snapop.app/*` is configured as a Cloudflare Workers route.
 
 ## Commands
 
