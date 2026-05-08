@@ -26,8 +26,14 @@ npm run deploy
 
 ## Deployment
 
-Pushes to `main` run `.github/workflows/deploy-worker.yml`, which installs dependencies,
-runs the checks, and deploys the Worker with Wrangler.
+Deploys should be handled by Cloudflare Workers Builds, not GitHub Actions.
 
-The workflow needs a GitHub Actions repository secret named `CLOUDFLARE_API_TOKEN`.
-Create it from the Cloudflare dashboard with Workers deploy permissions for this account.
+Configure the existing `snapop-landing-page` Worker in Cloudflare:
+
+- Git repository: `randomor/snapop-landing-page`
+- Production branch: `main`
+- Root directory: `/`
+- Build command: empty
+- Deploy command: `npx wrangler deploy`
+
+After that, Cloudflare watches pushes to `main` and deploys from its own build system.
